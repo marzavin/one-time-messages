@@ -1,0 +1,69 @@
+body {
+    background: #fafafa;
+    margin: 0;
+    font-family: Verdana, sans-serif;
+}
+
+    body main {
+        width: 640px;
+        margin: 0 auto;
+    }
+
+.otm-content {
+    border: 3px solid #305a72;
+    padding: 15px 15px;
+    margin: 30px 0;
+}
+
+.otm-logo {
+    margin-top: 30px;
+}
+
+.otm-content .otm-btn {
+    -moz-box-shadow: inset 0 1px 0 0 #3985b1;
+    -webkit-box-shadow: inset 0 1px 0 0 #3985b1;
+    box-shadow: inset 0 1px 0 0 #3985b1;
+    background-color: #216288;
+    border: 1px solid #17445e;
+    display: inline-block;
+    cursor: pointer;
+    color: #fff;
+    padding: 8px 18px;
+    text-decoration: none;
+    margin-top: 15px;
+    font-family: Verdana, sans-serif;
+    font-size: 13px;
+}
+
+.otm-content .otm-btn:hover {
+    background: linear-gradient(to bottom,#2d77a2 5%,#337da8 100%);
+    background-color: #28739e;
+}
+
+.otm-content .otm-input {
+    border: 1px solid #b0cfe0;
+    font-family: Verdana, sans-serif;
+    font-size: 13px;
+}
+
+    .otm-content .otm-input:read-only {
+        background-color: #fafafa;
+    }
+
+    .otm-content .otm-input:focus {
+        box-shadow: 0 0 5px #b0cfe0;
+        border: 1px solid #b0cfe0;
+    }
+
+    .otm-content .otm-input:focus-visible {
+        outline: none;
+        outline-offset: 0;
+    }
+
+.otm-content .otm-message {
+    resize: none;
+    box-sizing: border-box;
+    padding: 5px;
+    width: 100%;
+    height: 100px;
+}

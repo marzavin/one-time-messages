@@ -1,0 +1,14 @@
+﻿@model string
+
+<div class="otm-content">
+    @if (string.IsNullOrWhiteSpace(Model))
+    {
+        <textarea placeholder="Please, enter your message here..." class="js-message otm-message otm-input"></textarea>
+        <input type="button" class="js-save otm-btn" value="Save message" disabled />
+    }
+    else
+    {
+        <textarea placeholder="You are trying to open a one-time message. This message will be permanently destroyed on the server. No one (including you) will be able to get it again. Please, click 'Load message' button to display your message..." readonly class="js-message otm-message otm-input"></textarea>
+        <a href="@Url.Action(MessageController.LoadAction, MessageController.Name, new { id = Model })" class="js-load otm-btn">Load message</a>
+    }
+</div>
