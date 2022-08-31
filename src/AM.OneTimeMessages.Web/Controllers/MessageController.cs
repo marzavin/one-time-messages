@@ -29,7 +29,8 @@ namespace AM.OneTimeMessages.Web.Controllers
         [HttpPost("message/save")]
         public async Task<IActionResult> Save([FromForm] MessageModel model)
         {
-            if (string.IsNullOrEmpty(model.Id) || string.IsNullOrEmpty(model.Message))
+            if (string.IsNullOrEmpty(model.Id) || string.IsNullOrEmpty(model.Message)
+                || (model.TimeStamp.HasValue && model.TimeStamp.Value < DateTime.UtcNow))
             {
                 return BadRequest();
             }
