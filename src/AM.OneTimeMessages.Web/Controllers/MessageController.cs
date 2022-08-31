@@ -29,7 +29,7 @@ namespace AM.OneTimeMessages.Web.Controllers
         [HttpPost("message/save")]
         public async Task<IActionResult> Save([FromForm] MessageModel model)
         {
-            if (string.IsNullOrEmpty(model.Id) || string.IsNullOrEmpty(model.Message))
+            if (string.IsNullOrWhiteSpace(model.Id) || string.IsNullOrWhiteSpace(model.Message))
             {
                 return BadRequest();
             }
@@ -42,8 +42,12 @@ namespace AM.OneTimeMessages.Web.Controllers
         [HttpGet("message/load/{id}")]
         public async Task<IActionResult> Load([FromRoute] string id)
         {
-            var message = await _storage.PullAsync(id);
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                return BadRequest();
+            }
 
+            var message = await _storage.PullAsync(id);
             if (string.IsNullOrEmpty(message))
             {
                 return NotFound();
