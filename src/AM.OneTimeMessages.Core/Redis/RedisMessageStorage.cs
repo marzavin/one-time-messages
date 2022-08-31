@@ -8,6 +8,8 @@ namespace AM.OneTimeMessages.Core.Redis
 
         private IDatabase? _db;
 
+        protected readonly TimeSpan DefaultExpirationPeriod = new(7, 0, 0, 0, 0);
+
         private IDatabase Redis
         { 
             get 
@@ -46,7 +48,13 @@ namespace AM.OneTimeMessages.Core.Redis
                 throw new ArgumentNullException(nameof(key));
             }
 
-            await Redis.StringSetAsync(key, value);
+            TimeSpan? expire = DefaultExpirationPeriod;
+            if (ttl.HasValue)
+            {
+                expire = ttl.Value.Subtract(DateTime.UtcNow);
+            }
+
+            await Redis.StringSetAsync(key, value, expire);
         }
     }
 }
