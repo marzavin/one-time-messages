@@ -2,14 +2,17 @@ version: '3.4'
 
 services:
   nginx:
-    image: "nginx:latest"
+    image: "${DOCKER_REGISTRY-}am.otm.nginx"
     restart: unless-stopped
+    build:
+      context: .
+      dockerfile: build/nginx/Dockerfile
     ports:
       - 80:80
       - 443:443
-    container_name: "am.onetimemessages.webserver"
+    container_name: "am.onetimemessages.nginx"
   web:
-    image: ${DOCKER_REGISTRY-}amonetimemessagesweb
+    image: ${DOCKER_REGISTRY-}am.otm.web
     restart: unless-stopped
     build:
       context: .
