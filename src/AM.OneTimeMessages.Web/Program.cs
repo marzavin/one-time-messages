@@ -4,7 +4,7 @@ using AM.OneTimeMessages.Core.Redis;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddSingleton<RedisConfiguration>((sp) => builder.Configuration.GetSection("Redis").Get<RedisConfiguration>());
+builder.Services.AddSingleton((sp) => builder.Configuration.GetSection("Redis").Get<RedisConfiguration>());
 builder.Services.AddSingleton<IMessageStorage, RedisMessageStorage>();
 
 builder.Services.AddControllersWithViews();
